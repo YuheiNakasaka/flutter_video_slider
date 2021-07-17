@@ -2,6 +2,11 @@
 
 A simple video slider to trim by specific area.
 
+[![pub ver](https://img.shields.io/badge/pub-v0.0.1-blue)](https://pub.dev/packages/video_slider)
+[![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/YuheiNakasaka/)
+
+![RPReplay_Final1626501540](https://user-images.githubusercontent.com/1421093/126027540-0bdeca06-5167-420c-9f36-2c37c2ba0862.gif)
+
 This library is inspired by [video_editor](https://github.com/seel-channel/video_editor). Almost slider code is copied from the library. What I did is to extract only slider from other dependencies like player, cropper and ffmpeg. You can combine a original player or trimming methods which you want to use with this simple slider.
 
 ## Requirement
@@ -32,5 +37,3 @@ Container(
 ```
 
 See [example](https://github.com/YuheiNakasaka/video_slider/tree/master/example) for more info.
-
-![RPReplay_Final1626501540](https://user-images.githubusercontent.com/1421093/126027540-0bdeca06-5167-420c-9f36-2c37c2ba0862.gif)
