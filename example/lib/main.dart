@@ -61,6 +61,8 @@ class AppPage extends StatefulWidget {
 }
 
 class _AppPageState extends State<AppPage> {
+  String _positionText = 'Start: \nEnd: ';
+
   @override
   void initState() {
     super.initState();
@@ -68,8 +70,7 @@ class _AppPageState extends State<AppPage> {
   }
 
   Future<void> _init() async {
-    await widget.controller.video.initialize();
-    widget.controller.video.setLooping(true);
+    await widget.controller.initialize();
     widget.controller.video.play();
     setState(() {});
   }
@@ -101,18 +102,43 @@ class _AppPageState extends State<AppPage> {
                         child: Text('Loading...'),
                       ),
               ),
+              Align(
+                alignment: Alignment.center,
+                child: ElevatedButton(
+                  child: Text('Print start position time and end position time.'),
+                  onPressed: () {
+                    final duration = widget.controller.video.value.duration.inSeconds;
+                    final start = widget.controller.minTrim * duration;
+                    final end = widget.controller.maxTrim * duration;
+                    setState(() {
+                      _positionText = 'Start: $start\nEnd: $end';
+                    });
+                  },
+                ),
+              ),
               if (widget.controller.video.value.isInitialized)
-                Align(
-                  alignment: Alignment.bottomCenter,
-                  child: Container(
-                    width: MediaQuery.of(context).size.width - 40,
-                    height: 60,
-                    margin: const EdgeInsets.symmetric(horizontal: 20),
-                    child: VideoSlider(
-                      controller: widget.controller,
-                      height: 60,
-                      maxDuration: const Duration(seconds: 15),
-                    ),
+                Positioned(
+                  bottom: 100,
+                  child: Column(
+                    children: [
+                      Text(
+                        _positionText,
+                        style: TextStyle(
+                          color: Colors.red,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Container(
+                        width: MediaQuery.of(context).size.width - 40,
+                        height: 60,
+                        margin: const EdgeInsets.symmetric(horizontal: 20),
+                        child: VideoSlider(
+                          controller: widget.controller,
+                          height: 60,
+                          maxDuration: const Duration(seconds: 15),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
             ],
