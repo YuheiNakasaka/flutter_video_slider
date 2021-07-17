@@ -1,0 +1,11 @@
+include: package:pedantic_mono/analysis_options.yaml
+analyzer:
+  exclude:
+    - "test/*"
+  errors:
+    lines_longer_than_80_chars: ignore
+    cascade_invocations: ignore
+    avoid_catches_without_on_clauses: ignore
+    prefer_int_literals: ignore
+    no_default_cases: ignore
+    todo: ignore
