@@ -104,7 +104,10 @@ class _ThumbnailSliderState extends State<ThumbnailSlider> {
       return StreamBuilder(
         stream: _stream,
         builder: (_, AsyncSnapshot<List<Uint8List>> snapshot) {
-          final data = snapshot.data!;
+          final data = snapshot.data;
+          if (data == null) {
+            return const SizedBox();
+          }
           return snapshot.hasData
               ? ListView.builder(
                   scrollDirection: Axis.horizontal,
