@@ -11,8 +11,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  video_player:
-  video_thumbnail:
+  video_player: ^2.1.10
+  video_thumbnail: ^0.3.3
 
 dev_dependencies:
   flutter_test:
